@@ -1,0 +1,4 @@
+source_ip,destination_ip,event_type,severity,description,source
+198.51.100.23,10.10.0.10,port_scan,medium,Sequential connection attempts across TCP ports,firewall-lab
+10.20.1.18,10.10.0.10,successful_login,low,Successful VPN authentication,identity-provider
+203.0.113.77,10.10.1.20,malware_detected,high,Endpoint protection reported a test signature,endpoint-lab

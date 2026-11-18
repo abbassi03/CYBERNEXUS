@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">ACCOUNT SECURITY</div><h1>My profile</h1><p>Manage your account credentials and active session.</p></div></div>
+{% if required %}<div class="notice notice-warning"><b>Password update required</b><span>Set a new password before using the rest of the application.</span></div>{% endif %}
+<div class="content-grid two-col">
+  <section class="panel"><div class="panel-header"><div><h3>Account details</h3><p>Your current workspace identity</p></div><span class="badge badge-info">{{ current_user['role']|title }}</span></div><div class="profile-summary"><span class="avatar avatar-xl">{{ current_user['full_name'][:1]|upper }}</span><div><b>{{ current_user['full_name'] }}</b><span>{{ current_user['email'] }}</span></div></div></section>
+  <section class="panel"><div class="panel-header"><div><h3>Change password</h3><p>Use at least 12 characters with letters and numbers.</p></div></div><form method="post" class="form-stack"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label>Current password<input type="password" name="old_password" autocomplete="current-password" required></label><label>New password<input type="password" name="new_password" minlength="12" autocomplete="new-password" required></label><label>Confirm new password<input type="password" name="confirm_password" minlength="12" autocomplete="new-password" required></label><button class="btn btn-primary" type="submit">Update password</button></form></section>
+</div>
+{% endblock %}

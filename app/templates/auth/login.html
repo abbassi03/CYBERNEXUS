@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block auth_content %}
+<div class="login-page">
+  <div class="login-art">
+    <a class="brand brand-large" href="{{ url_for('auth.login') }}"><span class="brand-mark"><svg viewBox="0 0 48 48"><path d="M24 3 41 9v13c0 11-7 18-17 23C14 40 7 33 7 22V9z" fill="none" stroke="currentColor" stroke-width="3"/><path d="m15 24 6 6 13-14" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>CYBER<span>NEXUS</span></strong><small>SECURITY OPERATIONS</small></span></a>
+    <div class="login-art-copy"><div class="eyebrow"><span class="status-dot"></span> SECURITY OPERATIONS CENTER</div><h1>See the signal.<br><em>Stop the threat.</em></h1><p>A focused workspace for security telemetry, threat triage, and incident response.</p><div class="login-art-grid"><div><b>01</b><span>COLLECT</span></div><div><b>02</b><span>DETECT</span></div><div><b>03</b><span>RESPOND</span></div></div></div>
+    <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-glow"></div>
+    <div class="login-art-footer">DEFENSIVE SECURITY · ANALYST WORKSPACE</div>
+  </div>
+  <div class="login-panel"><div class="login-form-wrap"><div class="eyebrow">WELCOME BACK</div><h2>Sign in to your workspace</h2><p class="muted">Enter your credentials to continue to the security console.</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}{% for category,message in messages %}<div class="flash flash-{{ category }}">{{ message }}</div>{% endfor %}{% endif %}{% endwith %}
+    <form method="post" class="form-stack" autocomplete="on">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label>Email address<input type="email" name="email" placeholder="analyst@company.com" autocomplete="username" required autofocus></label>
+      <label>Password<input type="password" name="password" placeholder="Enter your password" autocomplete="current-password" required></label>
+      <button class="btn btn-primary btn-full" type="submit">Access security console <span>→</span></button>
+    </form>
+    <div class="login-note"><span class="lock-icon">▣</span><span>Protected session · Authorized personnel only</span></div>
+    <div class="demo-credentials"><b>First-run demo account</b><span>admin@cybernexus.local</span><span>Use the temporary password configured by the administrator.</span><small>You will be required to change it after your first sign-in. See the README for first-run setup.</small></div>
+  </div><div class="login-panel-footer">© 2026 CYBERNEXUS · Built for defensive security workflows</div></div>
+</div>
+{% endblock %}

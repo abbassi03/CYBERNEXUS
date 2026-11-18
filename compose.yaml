@@ -1,0 +1,17 @@
+services:
+  cybernexus:
+    build: .
+    container_name: cybernexus
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      CYBERNEXUS_SECRET_KEY: ${CYBERNEXUS_SECRET_KEY:?Set CYBERNEXUS_SECRET_KEY in .env}
+      CYBERNEXUS_ADMIN_PASSWORD: ${CYBERNEXUS_ADMIN_PASSWORD:?Set CYBERNEXUS_ADMIN_PASSWORD in .env}
+      CYBERNEXUS_INGEST_KEY: ${CYBERNEXUS_INGEST_KEY:-}
+      CYBERNEXUS_DATABASE: /data/cybernexus.db
+      CYBERNEXUS_COOKIE_SECURE: ${CYBERNEXUS_COOKIE_SECURE:-0}
+    volumes:
+      - cybernexus_data:/data
+volumes:
+  cybernexus_data:
